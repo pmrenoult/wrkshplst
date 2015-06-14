@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Catégorie:</strong>
+  <%= link_to Category.find(@event.category_id).name, category_path(@event.category_id) %>
+</p>
+
+
+
+<p>
+  <strong>Date begin:</strong>
+  <%= @event.date_begin %>
+</p>
+
+<p>
+  <strong>Time begin:</strong>
+  <%= @event.time_begin %>
+</p>
+
+<p>
+  <strong>Date end:</strong>
+  <%= @event.date_end %>
+</p>
+
+<p>
+  <strong>Time end:</strong>
+  <%= @event.time_end %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

@@ -1,0 +1,39 @@
+<%# app/views/students/_list.html.erb %>
+<div id="filterrific_results">
+
+  <div>
+    <%= page_entries_info events %>
+  </div>
+
+  <br/>
+
+  <table class = "table">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Date begin</th>
+      <th>Time begin</th>
+      <th>Date end</th>
+      <th>Time end</th>
+    </tr>
+    <% events.each do |event| %>
+      <tr>
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= link_to Category.find(event.category_id).name, category_path(event.category_id) %></td>
+        <td><%= event.date_begin.strftime("%x") %></td>
+        <td><%= event.time_begin.strftime("%r") %></td>
+        <td><%= event.date_end.strftime("%x") %></td>
+        <td><%= event.time_end.strftime("%r") %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="center">
+   <%= will_paginate @events, renderer: BootstrapPagination::Rails %>
+</div>

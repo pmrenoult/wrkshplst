@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :categories
   resources :events
+  resources :users
   root "pages#home"
   get "about" => "pages#about"
 

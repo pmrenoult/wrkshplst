@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@event, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
+<%= bootstrap_form_for(@event, layout: :horizontal, html: { multipart: true }, label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -12,6 +12,7 @@
   <% end %>
   <%= f.text_field :title %>
   <%= f.text_area :description %>
+  <%= f.file_field :image, class: "form-control" %>
   <%= f.date_select :date_begin %>
   <%= f.time_select :time_begin %>
   <%= f.date_select :date_end %>
@@ -21,6 +22,3 @@
   <%= f.submit "Créer l'évènement" %>
   <% end %>
 <% end %>
-
-
-

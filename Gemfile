@@ -18,6 +18,9 @@ gem 'bootstrap-sass'
 #Installation de form bootstrap pour rails
 gem 'bootstrap_form'
 
+#Gestion d'images
+gem 'paperclip', '~> 4.2'
+
 #Pagination
 gem 'will_paginate', '~> 3.0.5'
 
@@ -32,6 +35,8 @@ gem 'devise'
 
 gem 'jquery-turbolinks'
 
+# Mansonry
+gem 'masonry-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

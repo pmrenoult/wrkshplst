@@ -12,3 +12,37 @@
 .center {
      text-align: center;
 }
+
+/* unvisited link */
+a:link {
+	color: #777777;
+}
+
+// /* visited link */
+a:visited {
+color: #777777;
+}
+
+// /* mouse over link */
+a:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+// /* selected link */
+a:active {
+	color: #000000;
+}
+
+
+.panel-default > .panel-heading {
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  border-radius: 0px;
+
+}
+
+.btn {
+    border-radius: 0px;
+}

@@ -7,7 +7,7 @@
 
   <br/>
 
-  <table class = "table">
+<!--   <table class = "table">
     <tr>
       <th>Title</th>
       <th>Description</th>
@@ -16,6 +16,7 @@
       <th>Time begin</th>
       <th>Date end</th>
       <th>Time end</th>
+      <th>User</th>
     </tr>
     <% events.each do |event| %>
       <tr>
@@ -26,12 +27,47 @@
         <td><%= event.time_begin.strftime("%r") %></td>
         <td><%= event.date_end.strftime("%x") %></td>
         <td><%= event.time_end.strftime("%r") %></td>
+        <td><%= event.user.email if event.user %></td>
         <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if event.user == current_user %>
+          <td><%= link_to 'Edit', edit_event_path(event) %></td>
+          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>
+</div>
+ -->
+
+<div id="events" class="transitions-enabled">
+  <% @events.each do |event| %>
+    <div class="box panel panel-default">
+      <div class="panel-body">
+
+        <%= image_tag event.image.url(:medium) %>
+<!--         <h1><%= event.title %></h1>
+ -->        <h1><%= link_to event.title,event_path(event) %></h1>
+
+
+
+
+
+        <p><%= event.description %></p>
+        <p><%= link_to Category.find(event.category_id).name, category_path(event.category_id) %></p>
+        <p><span class="glyphicon glyphicon-calendar"></span> Du <%= event.date_begin.strftime("%x") %> au <%= event.date_end.strftime("%x") %></p>
+        <p><span class="glyphicon glyphicon-time"></span> De <%= event.time_begin.strftime("%r") %> à <%= event.time_end.strftime("%r") %></p>
+      </div>
+      <div class="panel-footer">
+        <p>Crée par <%= link_to event.user.name, user_path(event.user) %></p>
+        <p><%= link_to 'Show', event_path(event) %></p>
+        <% if event.user == current_user %>
+          <p><%= link_to 'Edit', edit_event_path(event) %></p>
+          <p><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <% end %>
+      </div>
+
+    </div>
+  <% end %>
 </div>
 
 <div class="center">

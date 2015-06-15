@@ -14,14 +14,35 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Catégories", categories_path %></li>
         <li><%= link_to "All events", events_path %></li>
+        <% if user_signed_in? %>
         <li>
-          <%= link_to new_event_path do %>
-            <span class="glyphicon glyphicon-plus"></span> Créer un event
-          <% end %>
-        </li>
+            <%= link_to new_event_path do %>
+              <span class="glyphicon glyphicon-plus"></span> Créer un event
+            <% end %>
+          </li>
+        <% end %>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to edit_user_registration_path do %>
+              <span class="glyphicon glyphicon-user"></span> <%= current_user.name if user_signed_in? %>
+            <% end %>
+          </li>
+
+          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+        <% end %>
         <li><%= link_to "About", about_path %></li> 
       </ul>
     </div><!-- /.navbar-collapse -->
   </div>
 </nav>
+
+
+
+
+
+
+

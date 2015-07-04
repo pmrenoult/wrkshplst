@@ -1,0 +1,28 @@
+<header class="page-header">
+	<div class="background-image-holder parallax-background">
+<!-- 		<img class="background-image" alt="Background Image" src="img/hero14.jpg">
+ -->
+		<%= image_tag("wrkshplst-accueil.jpg", alt: 'Background Image', class: "background-image") %>
+
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+<!-- 				<img alt="logo" class="logo" src="img/logo-light.png">
+ -->
+				<%= image_tag("wrkshplst-logo-light.png", alt: 'logo', class: "logo") %>
+
+				<h1 class="text-white space-bottom-medium">Bienvenue dans l'espace d'administration</h1>
+				<a target="_blank" href="http://www.mediumra.re/pivot/variant/builder.html" class="btn btn-primary btn-white">Discover</a>
+				<a href="#" class="btn btn-primary btn-filled">Sign Up</a>
+			</div>
+		</div>
+	</div>
+</header>
+
+<% flash.each do |name, msg| %>
+     <%= content_tag(:div, msg, class: "alert alert-info") %>
+<% end %>
+
+

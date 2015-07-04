@@ -1,28 +1,60 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <%= image_tag @event.image.url(:medium) %>
-</p>
-<p>
-  <%= image_tag @event.image.url(:thumb) %>
-</p>
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<header class="title">
+    <div class="background-image-holder parallax-background">
+      <%= image_tag("hero14.jpg", alt: 'Background Image', class: "background-image") %>  
+    </div>
+    
+    <div class="container align-bottom">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 class="text-white"><%= @event.title %></h1>
+          <span class="sub alt-font text-white"><%= link_to Category.find(@event.category_id).name, category_path(@event.category_id) %>
+</span>
+        </div>
+      </div><!--end of row-->
+    </div><!--end of container-->
+</header>
+      
+<section class="article-single">
+  <div class="container">
+    <div class="row">
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Catégorie:</strong>
-  <%= link_to Category.find(@event.category_id).name, category_path(@event.category_id) %>
-</p>
-
-
-
-<p>
+      <div class="col-sm-4 col-md-3">
+        <div class="author-details no-pad-top">
+          <%= image_tag("team-small-1.png", alt: 'Author') %>
+          <h5><%= link_to @event.user.name, user_path(@event.user) %></h5>
+          <p>Web Designer</p>
+          <ul class="social-icons">
+          <li>
+            <a href="#">
+              <i class="icon social_twitter"></i>
+            </a>
+          </li>
+          
+          <li>
+            <a href="#">
+              <i class="icon social_facebook"></i>
+            </a>
+          </li>
+          
+          <li>
+            <a href="#">
+              <i class="icon social_tumblr"></i>
+            </a>
+          </li>
+        </ul>
+        </div>
+      </div>
+            
+      <div class="col-sm-8">
+        <div class="article-body">
+          <p class="lead">  <%= @event.title %></p>
+          <figure>
+            <%= image_tag @event.image.url(:medium) %>
+<!--             <img alt="Blog Article Figure" src="img/hero3.jpg">
+ -->            <figcaption>Here is a caption for this picture</figcaption>
+          </figure>
+          <p><%= @event.description %></p>
+          <p>
   <strong>Date begin:</strong>
   <%= @event.date_begin %>
 </p>
@@ -41,6 +73,14 @@
   <strong>Time end:</strong>
   <%= @event.time_end %>
 </p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
+        </div>
+      </div>
+    </div><!--end of row-->
+  </div><!--end of container--> 
+  <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+</section>
+
+<p id="notice"><%= notice %></p>
+
+

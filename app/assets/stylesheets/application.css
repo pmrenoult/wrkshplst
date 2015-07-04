@@ -14,4 +14,12 @@
  *= require rails_bootstrap_forms
  *= require 'masonry/transitions'
  *= require_self
+ *= require theme/bootstrap
+ *= require theme/flexslider.min
+ *= require theme/line-icons.min
+ *= require theme/elegant-icons
+ *= require theme/lightbox.min
+ *= require theme/bootstrap.min
+ *= require theme/theme-matte
+ *= require theme/bootstrap
  */

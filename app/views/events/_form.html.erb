@@ -1,4 +1,7 @@
-<%= bootstrap_form_for(@event, layout: :horizontal, html: { multipart: true }, label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
+  <div class="container">
+    <div class="row">
+
+    <%= bootstrap_form_for(@event, layout: :horizontal, html: { multipart: true }, label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -22,3 +25,4 @@
   <%= f.submit "Créer l'évènement" %>
   <% end %>
 <% end %>
+</div></div>

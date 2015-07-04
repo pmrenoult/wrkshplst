@@ -1,48 +1,80 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Wrkshplst", root_path, class:"navbar-brand" %>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Catégories", categories_path %></li>
-        <li><%= link_to "All events", events_path %></li>
-        <% if user_signed_in? %>
-        <li>
-            <%= link_to new_event_path do %>
-              <span class="glyphicon glyphicon-plus"></span> Créer un event
-            <% end %>
-          </li>
-        <% end %>
-        <% if user_signed_in? %>
-          <li>
-            <%= link_to edit_user_registration_path do %>
-              <span class="glyphicon glyphicon-user"></span> <%= current_user.name if user_signed_in? %>
-            <% end %>
-          </li>
-
-          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Sign in", new_user_session_path %></li>
-        <% end %>
-        <li><%= link_to "About", about_path %></li> 
-      </ul>
-    </div><!-- /.navbar-collapse -->
+<!-- <div class="loader">
+  <div class="spinner">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
   </div>
-</nav>
+</div> -->
+    
+<div class="nav-container">
+  <nav class="top-bar overlay-bar">
+    <div class="container">
+      <div class="row nav-menu">
+        <div class="col-md-2 col-sm-3 columns">
+
+             <%= link_to image_tag("wrkshplst-logo-light.png", alt: 'Logo', class: "logo logo-light"), root_path %>
+
+             <%= link_to image_tag("wrkshplst-logo-dark.png", alt: 'Logo', class: "logo logo-dark"), root_path %>
+
+
+        </div>
+      
+        <div class="col-md-10 col-sm-9 columns">
+          <ul class="menu">
+            <li><%= link_to "All events", events_path %></li>
+            <li class="has-dropdown"><a href="#">Categories</a>
+              <ul class="subnav">
+                <li><a href="#">Category 1</a></li>
+                <li><a href="#">Category 2</a></li>
+                <li><a href="#">Category 3</a></li>
+                <li><a href="#">Category 4</a></li>
+              </ul>
+            </li>
+<!--             <li><%= link_to "Sign In", new_user_session_path %></li>
+ -->            <% if user_signed_in? %>
+
+                   <li class="has-dropdown"><a href="#"><span class="icon-profile-male"></span> <%= current_user.name if user_signed_in? %></a>
+                    <ul class="subnav">
+                      <li><%= link_to "Profile", edit_user_registration_path %></li>
+                      <li><%= link_to "Disconnect", destroy_user_session_path, method: :delete %></li>
+                    </ul>
+                  </li>
+            <% else %>
+              <li><%= link_to "Sign In", new_user_session_path %></li>
+            <% end %>
+            <li><%= link_to "About", about_path %></li>
 
 
 
 
 
+          </ul>
+          <ul class="social-icons text-right">
+            <li>
+              <a href="#">
+                <i class="icon social_twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon social_facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon social_instagram"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="mobile-toggle">
+        <i class="icon icon_menu"></i>
+      </div>
+      
+    </div>
+  </nav>
+
+</div>
 
 

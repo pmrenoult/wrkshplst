@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Wrkshplst Admin</title>
+<!--         <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  			<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  			<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  			<%= csrf_meta_tags %>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700%7CRaleway:700' rel='stylesheet' type='text/css'>
+        <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+		
+		<div class="main-container">
+			<%= yield %>
+
+
+		</div>
+
+    </body>
+</html>
+				
+
+

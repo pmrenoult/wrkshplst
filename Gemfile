@@ -33,6 +33,12 @@ gem 'filterrific'
 #Utilisateurs
 gem 'devise'
 
+
+#Inherited ressources pour admin
+gem 'inherited_resources'
+
+
+
 gem 'jquery-turbolinks'
 
 # Mansonry

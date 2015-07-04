@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   def index
     # @events = Event.all
 
+    @categories = Category.all
     @filterrific = initialize_filterrific(
     Event,
     params[:filterrific],

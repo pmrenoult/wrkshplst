@@ -7,68 +7,59 @@
 
   <br/>
 
-<!--   <table class = "table">
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Date begin</th>
-      <th>Time begin</th>
-      <th>Date end</th>
-      <th>Time end</th>
-      <th>User</th>
-    </tr>
-    <% events.each do |event| %>
-      <tr>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
-        <td><%= link_to Category.find(event.category_id).name, category_path(event.category_id) %></td>
-        <td><%= event.date_begin.strftime("%x") %></td>
-        <td><%= event.time_begin.strftime("%r") %></td>
-        <td><%= event.date_end.strftime("%x") %></td>
-        <td><%= event.time_end.strftime("%r") %></td>
-        <td><%= event.user.email if event.user %></td>
-        <td><%= link_to 'Show', event %></td>
-        <% if event.user == current_user %>
-          <td><%= link_to 'Edit', edit_event_path(event) %></td>
-          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </table>
-</div>
- -->
+  <section class="blog-masonry bg-muted">
+        
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <ul class="blog-filters">
+          <li data-filter="*" class="active"><span>All</span></li>
 
-<div id="events" class="transitions-enabled">
-  <% @events.each do |event| %>
-    <div class="box panel panel-default">
-      <div class="panel-body">
+          <% @categories.each do |category| %>
+            <li data-filter=".<%= category.name %>"><span><%= category.name.titleize %></span></li>
 
-        <%= image_tag event.image.url(:medium) %>
-<!--         <h1><%= event.title %></h1>
- -->        <h1><%= link_to event.title,event_path(event) %></h1>
-
-
-
-
-
-        <p><%= event.description %></p>
-        <p><%= link_to Category.find(event.category_id).name, category_path(event.category_id) %></p>
-        <p><span class="glyphicon glyphicon-calendar"></span> Du <%= event.date_begin.strftime("%x") %> au <%= event.date_end.strftime("%x") %></p>
-        <p><span class="glyphicon glyphicon-time"></span> De <%= event.time_begin.strftime("%r") %> à <%= event.time_end.strftime("%r") %></p>
+          <% end %>
+          </ul>
+        </div>
       </div>
-      <div class="panel-footer">
-        <p>Crée par <%= link_to event.user.name, user_path(event.user) %></p>
-        <p><%= link_to 'Show', event_path(event) %></p>
-        <% if event.user == current_user %>
-          <p><%= link_to 'Edit', edit_event_path(event) %></p>
-          <p><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-        <% end %>
-      </div>
-
     </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="blog-masonry-container">
+  <% @events.each do |event| %>
+
+        <div class="col-md-3 col-sm-6 blog-masonry-item <%= Category.find(event.category_id).name %>">
+          <div class="item-inner">
+     <a href="blog-single.html"><%= image_tag event.image.url(:medium) %></a>
+           <div class="post-title">
+              <h2><%= link_to event.title,event_path(event) %></h2>
+              <p><%= event.description %></p>
+
+              <p><%= link_to Category.find(event.category_id).name, category_path(event.category_id) %></p>
+
+              <div class="post-meta">
+                <span class="sub alt-font"><span class="icon-calendar"> Du <%= event.date_begin.strftime("%x") %> au <%= event.date_end.strftime("%x") %></span>
+                <span class="sub alt-font"><span class="icon-clock"> De <%= event.time_begin.strftime("%r") %> à <%= event.time_end.strftime("%r") %></span>
+                <br/>
+                <span class="sub alt-font">Crée par <%= link_to event.user.name, user_path(event.user) %></span>
+                        <% if event.user == current_user %>
+
+        <% end %>
+              </div>
+          <span class="icon-pencil"><%= link_to 'Edit', edit_event_path(event) %></span>
+          <span class="icon-pencil"><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+                      </div>
+          </div>
+        </div>
+
+
   <% end %>
-</div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 <div class="center">
    <%= will_paginate @events, renderer: BootstrapPagination::Rails %>

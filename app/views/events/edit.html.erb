@@ -1,6 +1,21 @@
-<div class="page-header">
-  <h1>Modifier un événement</h1>
-</div>
+<header class="page-header">
+  <div class="background-image-holder parallax-background">
+    <!-- <img class="background-image" alt="Background Image" src="img/hero6.jpg"> -->
+
+    <%= image_tag("hero6.jpg", alt: 'Background Image', class: "background-image") %>
+
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <span class="text-white Créer un événement-font">Modifier</span>
+        <h1 class="text-white">Events</h1>
+        <p class="text-white lead">Learn why we're the best at what we do<br>and why we're regarded as one of the best<br>in the creative industry today.</p>
+      </div>
+    </div>
+  </div>
+</header>
 <%= render 'form' %>
 
 <%= link_to 'Show', @event %> |
